@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+  
+    min-width: 380px;
+    min-height:200px;
+  }
+  
+  .container > * {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .form {
+    display: flex;
+    padding-top: 12px;
+  }
+  
+  .mat-form-field {
+    font-size: 16px;
+    flex-grow: 1;
+    margin-left:60px;
+    margin-top:40px;
+    width:70%;
+  }
+ 
+  .mat-raised-button.mat-success{
+    margin-left:90px;
+    color: #f0fff3;
+    background-color:MediumSeaGreen;
+   
+  }

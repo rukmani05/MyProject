@@ -1,0 +1,68 @@
+<body>
+  
+<form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Ex. Jon" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Ex. Jon" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-label>Password</mat-label>
+    <input matInput type="password" placeholder="Ex. Jon" formControlName="password" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Confirm Password</mat-label>
+    <input matInput type="password" placeholder="Ex. Jon" formControlName="confirm_pwd" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mobile number</mat-label>
+    <input matInput placeholder="9876543210" formControlName="mobile" />
+  </mat-form-field>
+  <br><br>
+
+  <div class="custom-control custom-radio">
+    <input id="male" formControlName="gender" type="radio" class="custom-control-input" value="male" />
+    <label class="custom-control-label" for="male">Male</label>
+  </div>
+
+  <div class="custom-control custom-radio">
+    <input id="female" formControlName="gender" type="radio" class="custom-control-input" value="female" />
+    <label class="custom-control-label" for="female">Female</label>
+  </div><br>
+  
+  
+   <div>
+     <label for="dob">Date Of Birth:</label><br><br>
+  <input type="date" formControlName="dob" name="dob"></div>
+<br>
+
+
+  <mat-form-field>
+    <mat-label>Father Name</mat-label>
+    <input matInput placeholder="Ex. Jon" formControlName="f_name" />
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-label>Blood Group</mat-label>
+    <input matInput placeholder="A positive" formControlName="b_group" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+  <button color="accent" mat-raised-button type="submit">
+    <span>Sign up</span>
+  </button>
+
+
+</form>
+</body>

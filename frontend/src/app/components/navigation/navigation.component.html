@@ -1,0 +1,142 @@
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"> -->
+  <link rel="stylesheet" href="navigation.component.scss">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="/src/assets/js/custom.js"></script>
+</head>
+
+<!--Top Nav-->
+
+<nav *ngIf="!isAdminlogged && !isUserlogged" class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mytopnav">
+
+  <a routerLink="/home" data-toggle="tooltip" title="E_learning">
+    <img [src]="img4" alt="" class="img-responsive margin" style="width:50px; border-radius: 60%" alt="Image">
+  </a>
+
+
+
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a *ngIf="!isAdminlogged && !isUserlogged" class="nav-link" routerLinkActive="active-link" routerLink="/about"><b>About</b></a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="!isAdminlogged && !isUserlogged" class="nav-link" routerLinkActive="active-link" routerLink="/contact"><b>Contact
+            us</b></a>
+      </li>
+
+    </ul>
+
+<form class="form-inline my-2 my-lg-0">
+
+      <span class=" mr-sm-2 ">
+
+        <a *ngIf="!isAdminlogged && !isUserlogged" routerLinkActive="active-link" routerLink="/login">
+          <i class="fa fa-sign-in " aria-hidden="true"></i>&nbsp;
+          <span style="border-right:2px solid">Login &nbsp;</span>
+        </a>
+      </span>
+    </form> &nbsp;
+    <form>
+      <span class="my-2 my-lg-0 ">
+
+        <a *ngIf="!isAdminlogged && !isUserlogged" routerLinkActive="active-link" routerLink="/signup">
+          <i class="fa fa-user-plus " aria-hidden="true"></i>&nbsp;
+          <span>Signup</span>
+        </a>
+      </span>
+    </form>
+  
+  </div>
+</nav>
+
+<!--Bottom Nav-->
+
+<nav *ngIf="!isAdminlogged && !isUserlogged" class="navbar navbar-expand-lg fixed-bottom" id="mybtmnav">
+
+  <div class="col-md-4 "><br>
+    <h4>Also visit us</h4>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item "><a class="nav-link" href="#" style=" color:black;background-color:skyblue;"><i
+            class="fa fa-facebook"></i></a></li>&nbsp;&nbsp;
+      <li class="nav-item"><a class="nav-link" href="#" style=" color:black;background-color:skyblue;"><i
+            class="fa fa-twitter"></i></a></li>&nbsp;&nbsp;
+      <li class="nav-item"><a class="nav-link" href="#" style=" color:black;background-color:skyblue"><i
+            class="fa fa-linkedin"></i></a></li>
+
+    </ul>
+
+  </div>
+  <div class="col-md-4 ">
+    <h4>Useful Links</h4>
+    <ul class="navbar-nav mr-auto">
+      <li><a href="https://www.w3schools.com/">W3 Schools</a></li>
+    </ul>
+  </div>
+  <div class="col-md-4 ">
+    <h4>Contact</h4>
+    <ul class="navbar-nav mr-auto">
+      <li><a href="#">hr@elearning.gmail.com</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+ <input type="checkbox" id="check">
+ <header *ngIf="(isAdminlogged|| isUserlogged)" class="header">
+ 
+  
+  
+    <a routerLinkActive="active-link" routerLink="/logout" class="logout_btn"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+ 
+</header> 
+
+  
+ <div  *ngIf="(isAdminlogged || isUserlogged)" class="sidebar">
+<div class="sidebar-menu" >
+  <div class="art">
+  <label for="check">
+    <i class="fa fa-bars" id="sidebar_btn"></i>
+  </label></div>
+
+   <a *ngIf="(isAdminlogged || isUserlogged)" routerLink="/" ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+      <span>Home</span></a>
+    <a *ngIf="isAdminlogged" routerLink="/manage-user" routerLinkActive="active"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;
+        <span>Users</span></a>
+      <a *ngIf="isAdminlogged" routerLink="/manage-subjects" routerLinkActive="active"><i class="fa fa-comments-o"></i>&nbsp;
+        <span> Subjects</span> </a>
+    <a *ngIf="isAdminlogged" routerLink="/manage-content" routerLinkActive="active"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;
+        <span>Contents</span></a>
+    <a *ngIf="isAdminlogged" routerLink="/manage-standards" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+        <span>Standards</span></a>
+
+    <a  *ngIf="isAdminlogged" routerLink="/manage-qa" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+        <span>Quiz </span></a> 
+   
+      <a  *ngIf="(isAdminlogged|| isUserlogged)" routerLink="/manage-qa" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+        <span>Quiz Report</span></a>
+        <a  *ngIf="isAdminlogged" routerLink="/manage-qa" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+          <span>Quiz Updation</span></a> 
+
+
+     <a  *ngIf="isAdminlogged" routerLink="/manage-qa" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+        <span>Dashboard</span></a>
+        <a  *ngIf="isUserlogged" routerLink="/manage-qa" routerLinkActive="active"><i class="fa fa-question-circle x-lg"></i>&nbsp;
+          <span>History</span></a>
+</div>  
+</div>
+<div *ngIf="(isAdminlogged || isUserlogged)" class="content">
+  <router-outlet></router-outlet>
+</div>  
+
+

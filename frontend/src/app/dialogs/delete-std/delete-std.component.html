@@ -1,0 +1,18 @@
+<div class="container">
+    <h3 mat-dialog-title><b>Are you sure want to delete?</b></h3>
+    <div mat-dialog-content >
+      Id:{{data.id}}
+      <p></p>
+     Standard name:{{data.standard_name}}
+      
+    </div><br>
+    
+  <mat-progress-spinner [mode]= "'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+  
+    <div mat-dialog-actions>
+
+      <button mat-raised-button mat-button color="warn" [mat-dialog-close]="1" (click)="Delete(data.id); getToast();">Delete</button>
+      <button mat-raised-button mat-button color="success"  (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </div>
+  

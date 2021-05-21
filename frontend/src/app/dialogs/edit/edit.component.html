@@ -1,0 +1,41 @@
+
+<div class="container">
+
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+  
+     
+    
+      <div mat-dialog-content style="text-align: center; color:blue;">
+        <b style="font-size: 18px;">Edit User</b>
+      </div>
+  
+      
+      <mat-form-field >
+        <mat-label >Name</mat-label>
+        <input matInput  [(ngModel)]="data.name" name="name" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+
+      <mat-form-field >
+        <mat-label >Address</mat-label>
+        <input matInput  [(ngModel)]="data.address" name="address" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+
+      <mat-form-field >
+        <mat-label >Mobile</mat-label>
+        <input matInput  [(ngModel)]="data.mobile" name="mobile" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+<br><br>
+      
+  
+      <div mat-dialog-actions>
+ 
+        <button  mat-raised-button mat-button color="success"  [type]="submit"  [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="Edit();  getToast();" >Save</button>
+        <button  mat-raised-button  mat-button color="warn"   (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
+   

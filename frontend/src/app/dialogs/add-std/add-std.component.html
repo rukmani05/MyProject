@@ -1,0 +1,26 @@
+<div class="container">
+   
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+      <div mat-dialog-content style="text-align: center; color:blue;">
+        <b style="font-size: 18px;">Add Standard</b>
+      </div>
+  
+     
+     
+      <mat-form-field >
+        <mat-label >Standard Name</mat-label>
+        <input matInput  [(ngModel)]="data.standard_name" name="standard_name" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+
+
+      
+     
+  
+      <div mat-dialog-actions>
+        <button mat-raised-button mat-button color="success" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd(); getToast();">Save</button>
+        <button mat-raised-button mat-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

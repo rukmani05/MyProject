@@ -1,0 +1,46 @@
+
+
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search title" [(ngModel)]="searchTerm" />&nbsp;&nbsp;
+  <input type="text" class="form-control" placeholder="Search subject" [(ngModel)]="searchSubject" />
+</div><br>
+
+<table class="table table-mg" >
+  <tr>
+    <th *ngFor="let col of columns">
+      {{col}}
+    </th>
+  </tr>
+
+  <tr *ngFor="let content of contents | contentFilter:searchTerm |subjectFilter:searchSubject">
+   
+    <td *ngFor="let col of index">
+   
+      {{content[col]}}
+    
+      
+      <div *ngIf="col==='summary'">
+        <a
+        routerLinkActive="active-link"
+        routerLink="/materials"
+      >
+        <span>Get Materials</span>
+      </a>
+          
+      </div>
+       
+    
+      
+    </td>
+  
+  </tr>
+  <tr>
+    <ng-container *ngFor="let content of contents| paginate : {itemsPerPage:limit,
+     currentPage:p, totalItems:total}"></ng-container>
+  </tr>
+  
+</table>
+<div class="pagination pagination-sm m-0 float-right">
+  <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+
+</div>

@@ -1,0 +1,183 @@
+p {
+	margin-bottom: 0px;
+	font-size: 14px;
+	color: #666666;
+	line-height: 30px;
+}
+a {
+	text-decoration: none!important;
+}
+
+
+#mytopnav{
+	ul li a{
+		border-radius: 5px;;
+	}
+}
+
+
+
+a.filled-button:hover {
+	background-color: #fff;
+	color: #a4c639;
+}
+
+a.border-button {
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px 28px;
+	border-radius: 30px;
+	display: inline-block;
+	transition: all 0.3s;
+}
+
+a.border-button:hover {
+	background-color: #fff;
+	color: #a4c639;
+}
+#mybtmnav{
+  position:fixed;
+  height:75px;
+  background-color: #e3edf3;
+h4{
+  margin-top:10px;
+  text-align:center;
+  font-size:18px;
+  font-weight: 600;
+}
+ul{
+ justify-content: center;
+ padding-bottom: 15px;
+}
+}
+.sidebar-menu a.active{
+  background-color:#19B3D3;
+  color:white;
+
+}
+  
+// Sidebar
+label #sidebar_btn{
+ 
+	color:white;
+	cursor:pointer;
+   top:4px;
+   left:15px;
+	position:fixed;
+	font-size:22px;
+  
+ }
+ 
+ 
+ .sidebar {
+   background: #2f323a;
+  top:0px;
+   position: fixed;
+   left: 0;
+   width: 250px;
+   height: 100%;
+   transition: 0.5s;
+   transition-property: left;
+ }
+
+ 
+ 
+ .sidebar a{
+   padding-top:16px;
+   color: #fff;
+   display: block;
+   width: 100%;
+   line-height: 60px;
+   text-decoration: none;
+   padding-left: 30px;
+   box-sizing: border-box;
+   transition: 0.5s;
+ a:active{
+   color:blue;
+ }
+ }
+ 
+ .sidebar a:hover{
+   background: #19B3D3;
+ }
+ 
+ .sidebar i{
+   padding-right: 10px;
+ }
+ 
+ 
+ 
+ label #sidebar_btn:hover{
+   color: #19B3D3;
+ }
+ 
+ #check:checked ~ .sidebar{
+   left: -190px;
+ }
+ 
+ #check:checked ~ .sidebar a span{
+   display: none;
+ }
+ 
+ #check:checked ~ .sidebar a{
+   font-size: 20px;
+   margin-left: 170px;
+   width: 80px;
+ }
+ #check:checked ~ .header{
+	margin-left: 60px;
+  }
+
+   #check:checked ~ label{
+	margin-left: 60px;
+  }
+  
+ 
+  #check:checked ~ .logout_btn{
+justify-content: center;
+  }
+  .content{
+    margin-left: 280px;
+   
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    transition: 0.5s;
+  }
+  
+  #check:checked ~ .content{
+    margin-left: 80px;
+  }
+ 
+ #check{
+   display: none;
+ }
+
+
+ .header{
+	position: fixed;
+	background-color:#e3edf3;
+	height:40px;
+	width: 100%;
+	top:0px;
+  
+
+  }
+  .logout_btn{
+	
+	
+	text-decoration: none;
+    margin-right:70px;
+	margin-top:10px;
+	float: right;
+	font-size: 16px;
+	color:#007bff;
+	transition: 0.5s;
+  }
+ 
+
+

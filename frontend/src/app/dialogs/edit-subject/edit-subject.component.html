@@ -1,0 +1,28 @@
+<div class="container">
+ 
+ 
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+  
+      <div mat-dialog-content style="text-align: center; color:blue;">
+        <b style="font-size: 18px;">Edit Subject</b>
+      </div>
+  
+  
+      <mat-form-field >
+        <mat-label >Subject Name</mat-label>
+        <input matInput  [(ngModel)]="data.subject_name" name="subject_name" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+      
+
+  <mat-progress-spinner [mode]= "'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+     
+  
+      <div mat-dialog-actions>
+        <button mat-raised-button mat-button color="success" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="Edit(); getToast();">Save</button>
+        <button mat-raised-button  mat-button color="warn"  (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+
