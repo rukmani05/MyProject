@@ -9,7 +9,8 @@ const router = express.Router();
 
 
 router.post('/',auth,subController.create);
-router.delete('/',auth,subController.delete);
+router.post('/active',auth,subController.active);
 router.post('/subject',auth,subController.update);
 router.get('/',auth,subController.view);
+router.get('/subject',auth,subController.subject);
 module.exports = router;

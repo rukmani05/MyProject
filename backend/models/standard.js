@@ -14,14 +14,17 @@ module.exports = class Standard{
       [standard.standard_name]
     );
   }
-  static delete(id) {
-    return db.execute('DELETE FROM unacademy.standard WHERE id = ?', [id]);
+  static active(id) {
+    return db.execute('UPDATE  unacademy.standard SET standard.active=0  WHERE id = ?', [id]);
   }
   static updateById(id,standard_name){
     return db.execute(
       'UPDATE unacademy.standard SET standard_name=? WHERE id = ?',[standard_name,id]);
   }
   static view_standard() {
+    return db.execute('SELECT id, standard_name FROM unacademy.standard WHERE active=1');
+  }
+  static view_stdName() {
     return db.execute('SELECT id, standard_name FROM unacademy.standard WHERE active=1');
   }
 }

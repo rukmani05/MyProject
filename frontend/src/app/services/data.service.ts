@@ -14,16 +14,26 @@ export class DataService {
 
   private readonly API_URL = 'http://localhost:3000/view_user/';
   private url = 'http://localhost:3000/update/user';
-  private URL = 'http://localhost:3000/set_user/inactive';
+  private URL = 'http://localhost:3000/user/active/';
+
+
+  private link = 'http://localhost:3000/create_standard';
   private api1 = 'http://localhost:3000/view_std/';
   private api2 = 'http://localhost:3000/update/standard';
-  private api3 = 'http://localhost:3000/delete_standard';
-  private link = 'http://localhost:3000/create_standard';
+  private api3 = 'http://localhost:3000/std/active/';
+
+
+ 
   private link2 = 'http://localhost:3000/view_subject/';
   private link3 = 'http://localhost:3000/create_subject';
   private link4 = 'http://localhost:3000/update/subject';
-  private link5='http://localhost:3000/delete_subject';
+  private link5='http://localhost:3000/sub/active/';
+
+
   private link6='http://localhost:3000/create_content';
+  private link7='http://localhost:3000/view_content/';
+  private link8='http://localhost:3000/view/subject/';
+
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -101,6 +111,20 @@ return this.dialogData2;
       });
 
   }
+  // getAllContent():void{
+  //   this.httpClient.get<Content[]>(this.link7).subscribe(sub => {
+  //     this.dataChange3.next(sub);
+  //   },
+  //     (error: HttpErrorResponse) => {
+  //       console.log(error.name + ' ' + error.message);
+  //     });
+  // }
+  getSub(){
+    return this.httpClient.get('http://localhost:3000/view/subject/');
+  }
+  getStd(){
+    return this.httpClient.get('http://localhost:3000/view_standard/name');
+  }
 
 
 
@@ -114,6 +138,7 @@ return this.dialogData2;
     this.dialogData2 = data;
 }
 addContent(data):void{
+  console.log(data);
   this.httpClient.post<Content[]>(this.link6,data).subscribe();
   this.dialogData3=data;
 }
@@ -133,38 +158,19 @@ addContent(data):void{
     this.httpClient.post(this.link4, data).subscribe();
     this.dialogData2 = data;
   }
-
-  setinactive(data): void {
-    this.httpClient.put(this.URL, data).subscribe();
-    this.dialogData = data;
+  setinactive(data):void{
+    this.httpClient.post(this.URL,data).subscribe();
+    this.dialogData=data;
   }
-
-
-  deleteStd(data) {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      body: {
-        id: data
-      }
-    }
-    this.httpClient.delete('http://localhost:3000/delete_standard', options).subscribe(results => {
-      console.log(results)
-    })
+  inactiveStandard(data):void{
+    this.httpClient.post(this.api3,data).subscribe();
+    this.dialogData1=data;
   }
+inactiveSbject(data):void{
+  this.httpClient.post(this.link5,data).subscribe();
+  this.dialogData2=data;
 
-  deleteSub(data){
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      body: {
-        id: data
-      }
-    }
-    this.httpClient.delete('http://localhost:3000/delete_subject', options).subscribe(results => {
-      console.log(results)
-    })
-  }
+}
+
+
 }

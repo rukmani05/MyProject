@@ -6,7 +6,9 @@ exports.create = async (req, res, next) => {
   
    
     const title=req.body.title;
-    const summary=req.body.summary
+    const summary=req.body.summary;
+    const sub_id=req.body.sub_id;
+    const std_id=req.body.std_id;
    
   
     try {
@@ -15,7 +17,9 @@ exports.create = async (req, res, next) => {
       const contentDetails = {
         
       title:title,
-      summary:summary
+      summary:summary,
+      sub_id:sub_id,
+      std_id:std_id
 
 };
   
@@ -43,6 +47,22 @@ exports.create = async (req, res, next) => {
       next(err);
     }
   };
+
+  exports.active = async (req, res, next) => {
+  
+    try {
+     
+      const updateResponse = await Content.active(req.body.id);
+        res.status(200).json(updateResponse);
+        // res.json('Updated Content details')
+      } catch (err) {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
+      }
+    };
+
   exports.update = async (req, res, next) => {
   
     try {
@@ -57,6 +77,36 @@ exports.create = async (req, res, next) => {
         next(err);
       }
     };
+    exports.view = async (req, res, next) => {
+      try {
+     
+             let [result] = await Content.view();
+             res.json(result);
+         } catch (err) {
+             if (!err.statusCode) {
+                 err.statusCode = 500;
+                 console.log(err)
+                 res.status(500).json({ message: ' No content found' });
+             }
+             next(err);
+     
+         }
+     };
+    //  exports.view_sub = async (req, res, next) => {
+    //   try {
+     
+    //          let [result] = await Content.view_sub();
+    //          res.json(result);
+    //      } catch (err) {
+    //          if (!err.statusCode) {
+    //              err.statusCode = 500;
+    //              console.log(err)
+    //              res.status(500).json({ message: ' No content found' });
+    //          }
+    //          next(err);
+     
+    //      }
+    //  };
 
   //  exports.get_content = async (req, res, next) => {
   //      try{

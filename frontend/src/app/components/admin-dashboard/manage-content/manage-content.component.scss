@@ -1,85 +1,13 @@
-div button{
+.mat-icon-button {
   float:right;
   top:50px;
 
 }
-
-
-
-
-
-
-
-
-
-
-        
-
-// .card{
-//   width: 300px;
-
-//   margin-top: 50px;
-// }
-// .card .card-img-top{
-//   height:30px;
-//  margin-left: 80px;
-//  margin-top:5px;
-//  border-radius: 60%
-// }
-// .card .card-body .card-title{
-//   color:green;
-
-// }
-// .card .card-body .card-text{
-//   color:black;
- 
-// }
-// .card-footer{
-//   text-align: center;
-//   height:48px;
-//   background:#c9c1b5c2
-//   //  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-
-// }
-// .card .card-footer p{
-//   color:green;
-// }
-// .card .card-footer button  .mat-icon{
-//   justify-content: center;
-  
-// }
-// .card .card-body .accordion {
-//   background-color: #eee;
-//   color: #444;
-//   cursor: pointer;
-  
-//   width: 100%;
-//   border: none;
-//   text-align: left;
-//   outline: none;
-//   font-size: 15px;
-//   transition: 0.4s;
-// }
-// .active, .accordion:hover {
-//   background-color: #ccc;
+// .example-card {
+//   max-width: 200px;
 // }
 
-// .accordion:after {
-//   content: '\002B';
-//   color: #777;
-//   font-weight: bold;
-//   float: right;
-//   margin-left: 5px;
-// }
-
-// .active:after {
-//   content: "\2212";
-// }
-
-// .panel {
-//   padding: 0 18px;
-//   background-color: white;
-//   max-height: 0;
-//   overflow: hidden;
-//   transition: max-height 0.2s ease-out;
+// .example-header-image {
+//   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+//   background-size: cover;
 // }

@@ -15,14 +15,19 @@ module.exports = class Subject{
       [subject.subject_name]
     );
   }
-  static delete(id) {
-    return db.execute('DELETE FROM unacademy.subject WHERE id = ?', [id]);
-  }
+ 
   static updateById(id,subject_name){
     return db.execute(
       'UPDATE unacademy.subject SET subject_name=?  WHERE id = ?',[subject_name,id]);
   }
   static view_subject() {
     return db.execute('SELECT id, subject_name FROM unacademy.subject WHERE active=1');
+  }
+  static view_sub() {
+    return db.execute('SELECT id, subject_name FROM unacademy.subject WHERE active=1');
+  }
+  static active(id){
+    return db.execute(
+      'UPDATE unacademy.subject SET active=0  WHERE id = ?',[id]);
   }
 }

@@ -5,8 +5,34 @@
       <div mat-dialog-content style="text-align: center; color:blue;">
         <b style="font-size: 18px;">Add Content</b>
       </div>
-  
      
+      <mat-form-field >
+        <mat-label>Standard </mat-label>
+         
+        <mat-select  [(ngModel)]="data.std_id" name="std_id" required>
+         
+          <mat-option [value]="standard.id" *ngFor="let standard of standards">{{standard.standard_name}}</mat-option> 
+          
+        </mat-select>
+       
+      </mat-form-field>
+
+
+
+
+<mat-form-field >
+  <mat-label>Subject </mat-label>
+   
+  <mat-select  [(ngModel)]="data.sub_id" name="sub_id" required>
+   
+    <mat-option [value]="subject.id" *ngFor="let subject of subjects">{{subject.subject_name}}</mat-option> 
+    
+  </mat-select>
+  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>
+
+
+
      
       <mat-form-field >
         <mat-label >Title</mat-label>
@@ -16,7 +42,7 @@
 
       <mat-form-field >
         <mat-label >Summary</mat-label>
-        <input matInput  [(ngModel)]="data.summary" name="summary" required>
+        <textarea matInput  [(ngModel)]="data.summary" name="summary" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field><br><br>
       

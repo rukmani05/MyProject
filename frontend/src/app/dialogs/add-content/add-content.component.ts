@@ -5,6 +5,9 @@ import { Content } from 'src/app/models/Content';
 import { DataService } from 'src/app/services/data.service';
 import{ToastrService}from 'ngx-toastr';
 
+import { Subject } from 'src/app/models/Subject';
+
+
 
 @Component({
   selector: 'app-add-content',
@@ -12,19 +15,31 @@ import{ToastrService}from 'ngx-toastr';
   styleUrls: ['./add-content.component.scss']
 })
 export class AddContentComponent implements OnInit {
-
+  subjects;
+  standards;
+  
   constructor(public dialogRef: MatDialogRef<AddContentComponent>,
     private toastr:ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: Content,
+
+    
     public dataService: DataService) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+ this.dataService.getSub().subscribe(subjects=>{
+   this.subjects=subjects;
+ })
+ this.dataService.getStd().subscribe(standards=>{
+   this.standards=standards;
+ })
+
   }
 
 formControl = new FormControl('', [
 Validators.required
-// Validators.email,
+
 ]);
+
 
 getErrorMessage() {
 return this.formControl.hasError('required') ? 'Required field' :
@@ -41,6 +56,7 @@ this.dialogRef.close();
 }
 
 public confirmAdd(): void {
+  console.log(this.data);
 this.dataService.addContent(this.data);
 }
 

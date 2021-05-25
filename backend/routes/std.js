@@ -9,7 +9,8 @@ const router = express.Router();
 
 
 router.post('/',auth,stdController.create);
-router.delete('/',auth,stdController.delete);
+router.post('/active',auth,stdController.active);
 router.post('/standard',auth,stdController.update);
 router.get('/',auth,stdController.view);
+router.get('/name',auth,stdController.stdName);
 module.exports = router;

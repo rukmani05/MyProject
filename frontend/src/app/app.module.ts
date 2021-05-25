@@ -16,8 +16,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
-
+import {MatSelectModule} from '@angular/material/select';
+// import{MatFormField}from '@angular/material/form-field';
 
 
 import { MatButtonModule } from "@angular/material/button";
@@ -122,7 +122,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     
     BrowserModule,
     AppRoutingModule,
-  
+    MatSelectModule,
     MatButtonModule,
     MatCardModule,
     CommonModule,
@@ -144,7 +144,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
      MatProgressSpinnerModule,
-     HttpClientModule
+     HttpClientModule,
+    //  MatFormField
    
  
 

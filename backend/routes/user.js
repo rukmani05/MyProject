@@ -35,9 +35,9 @@ router.post(
  ],
   authController.signup
 );
-
+router.post('/active',auth,userController.set_active)
 router.get('/',auth,userController.view);
 router.post('/user',auth,userController.update);
-router.put('/inactive',auth,userController.set_inactive);
+
 
 module.exports = router;

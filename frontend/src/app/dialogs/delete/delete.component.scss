@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 150px;
+    min-height: 100px;
   }
   
   .container > * {
@@ -12,4 +12,7 @@
     color: #f0fff3;
     background-color:gray;
    
+  }
+  .mat-raised-button{
+    margin-left:23px;
   }

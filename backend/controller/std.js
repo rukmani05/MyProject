@@ -29,17 +29,21 @@ exports.create = async (req, res, next) => {
    
     }
   };
-  exports.delete = async (req, res, next) => {
+  exports.active = async (req, res, next) => {
+  
     try {
-      const deleteResponse = await Standard.delete(req.body.id);
-      res.status(200).json(deleteResponse);
-    } catch (err) {
-      if (!err.statusCode) {
-        err.statusCode = 500;
+     
+      const updateResponse = await Standard.active(req.body.id);
+        res.status(200).json(updateResponse);
+        // res.json('Updated Standard details')
+      } catch (err) {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
       }
-      next(err);
-    }
-  };
+    };
+ 
   exports.update = async (req, res, next) => {
   
     try {
@@ -70,4 +74,18 @@ exports.create = async (req, res, next) => {
          }
      };
 
- 
+     exports.stdName = async (req, res, next) => {
+      try {
+     
+             let [result] = await Standard.view_stdName();
+             res.json(result);
+         } catch (err) {
+             if (!err.statusCode) {
+                 err.statusCode = 500;
+                 console.log(err)
+                 res.status(500).json({ message: ' No Standard found' });
+             }
+             next(err);
+     
+         }
+     };

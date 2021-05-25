@@ -1,7 +1,7 @@
 const db = require('../util/database');
 
 module.exports = class User {
-  constructor(name, email, password,confirm_pwd, mobile, gender,dob,f_name,b_group,address,roles) {
+  constructor(name, email, password,confirm_pwd, mobile, gender,dob,f_name,b_group,address,roles,active) {
     this.name = name;
     this.email = email;
     this.password = password;
@@ -12,7 +12,8 @@ module.exports = class User {
     this.f_name=f_name;
     this.b_group=b_group;
     this.address=address;
-    this.roles=roles
+    this.roles=roles;
+    this.active=active;
   }
 
   static find(email) {
@@ -26,7 +27,7 @@ module.exports = class User {
     );
   }
   static view_user() {
-    return db.execute('SELECT  id, name,address,mobile FROM unacademy.user WHERE active=1');
+    return db.execute('SELECT  id, name,address,mobile,active FROM unacademy.user WHERE active=1');
   }
   static updateById(id,name,address,mobile){
     return db.execute(
@@ -35,7 +36,8 @@ module.exports = class User {
   static delete(id) {
     return db.execute('DELETE FROM unacademy.user WHERE id = ?', [id]);
   }
-  static setById(id){
-    return db.execute('UPDATE unacademy.user SET active=0  WHERE id = ?',[id]);
+  static set_active(id){
+    return db.execute(
+      'UPDATE unacademy.user SET user.active=0 WHERE id = ?',[id]);
   }
 }

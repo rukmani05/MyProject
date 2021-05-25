@@ -21,9 +21,10 @@ onNoClick(): void {
 this.dialogRef.close();
 }
 
-confirmEdit(data:any): void {
-  console.log(data);
-this.dataService.setinactive(data);
+confirmEdit(): void {
+ 
+this.dataService.setinactive(this.data);
+console.log(this.data);
 }
 getToast(){
   this.toastr.success('User Inactived Succesfully!!','Inactive User',{

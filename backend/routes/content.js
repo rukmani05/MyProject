@@ -10,7 +10,9 @@ const router = express.Router();
 
 router.post('/',auth,contentController.create);
 router.delete('/',auth,contentController.delete);
+router.post('/active',auth,contentController.active);
 router.post('/content',auth,contentController.update);
+router.get('/',auth,contentController.view);
 // router.get('/list',auth,contentController.get_content);
 
 

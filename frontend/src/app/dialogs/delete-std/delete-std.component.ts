@@ -22,10 +22,11 @@ onNoClick(): void {
 this.dialogRef.close();
 }
 
-Delete(data:any): void {
-  console.log(data);
-this.dataService.deleteStd(data);
-}
+Edit(): void {
+ 
+  this.dataService.inactiveStandard(this.data);
+  console.log(this.data);
+  }
 getToast(){
   this.toastr.success('Standard Deleted Succesfully!!','Delete Standard',{
     timeOut:1000,

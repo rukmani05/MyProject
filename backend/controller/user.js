@@ -28,23 +28,12 @@ exports.update = async (req, res, next) => {
         next(err);
       }
     };
-    // exports.delete = async (req, res, next) => {
-    //   try {
-    //     const deleteResponse = await User.delete(req.body.id);
-    //     res.status(200).json(deleteResponse);
-    //   } catch (err) {
-    //     if (!err.statusCode) {
-    //       err.statusCode = 500;
-    //     }
-    //     next(err);
-    //   }
-    // };
-    exports.set_inactive = async (req, res, next) => {
+    exports.set_active = async (req, res, next) => {
   
       try {
        
-        const updateResponse1 = await User.setById(req.body.id);
-          res.status(200).json(updateResponse1);
+        const updateResponse = await User.set_active(req.body.id,req.body.active);
+          res.status(200).json('User inactivated successfully!');
           // res.json('Updated Standard details')
         } catch (err) {
           if (!err.statusCode) {
@@ -53,3 +42,5 @@ exports.update = async (req, res, next) => {
           next(err);
         }
       };
+    
+    

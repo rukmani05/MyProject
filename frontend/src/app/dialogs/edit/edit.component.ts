@@ -40,6 +40,7 @@ this.dialogRef.close();
 
 Edit(): void {
 this.dataService.updateIssue(this.data);
+console.log(this.data);
 }
 getToast(){
   

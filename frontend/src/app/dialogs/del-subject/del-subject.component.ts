@@ -22,9 +22,9 @@ onNoClick(): void {
 this.dialogRef.close();
 }
 
-Delete(data:any): void {
-  console.log(data);
-this.dataService.deleteSub(data);
+Delete(): void {
+  console.log(this.data);
+this.dataService.inactiveSbject(this.data);
 }
 getToast(){
   this.toastr.success('Subject Deleted Succesfully!!','Delete Subject',{

@@ -3,7 +3,8 @@
 </app-navigation>
 
   <div class="container">
+    <mat-progress-spinner [mode]= "'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner> 
    <router-outlet></router-outlet>
   </div>
 
-  <mat-progress-spinner [mode]= "'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+ 

@@ -70,27 +70,24 @@ export class ManageUserComponent implements OnInit {
       }
     });
   }
-  Edit(i: number, id: number, name: string , address: string,mobile: string,active:number) {
-    this.id = id;
- 
+
+  delete(i: number, id: number,name: string , address: string,mobile: string,active:number){
     this.index = i;
-  
+    this.id = id;
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: {id: id, name:name, address: address, mobile: mobile,active:active}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        // When using an edit things are little different, firstly we find record inside DataService by id
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
-        // Then you update that record using data from dialogData (values you enetered)
-        this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
-        // And lastly refresh table
+        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x=>x.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
         this.refreshTable();
       }
+      
     });
   }
- 
  
   private refreshTable() {
  

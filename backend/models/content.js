@@ -1,19 +1,21 @@
 const db = require('../util/database');
 
 module.exports = class Content{
-  constructor(standard_id,subject_id,title,summary) {
-    this.standard_id=standard_id;
-    this.subject_id=subject_id;
+  constructor(standard_id,subject_id,title,summary,sub_id,active) {
+    
+    this.sub_id=sub_id;
     this.title=title;
     this.summary=summary;
+    
+    this.active=active;
   }
 
   
   
   static save(content) {
     return db.execute(
-    'INSERT INTO unacademy.content (title,summary) VALUES (?,?)',
-      [content.title,content.summary]
+    'INSERT INTO unacademy.content (title,summary,sub_id,std_id) VALUES (?,?,?,?)',
+      [content.title,content.summary,content.sub_id,content.std_id]
     );
   }
   static delete(id) {
@@ -24,10 +26,13 @@ module.exports = class Content{
       'UPDATE unacademy.content SET title=? WHERE id = ?',[title,id]);
   }
 
-  static find() {
-    return db.execute('SELECT standard_name,subject_name ,title,summary FROM unacademy.content LEFT JOIN unacademy.standard On content.standard_id=standard.id LEFT JOIN unacademy.subject On content.subject_id=subject.id');
+  static view() {
+    return db.execute('SELECT subject_name ,title,summary FROM unacademy.content LEFT JOIN unacademy.subject On content.sub_id=subject.id ');
   }
-  
+  static active(id){
+    return db.execute(
+      'UPDATE unacademy.content SET content.active=0 WHERE id = ?',[id]);
+  }
 
   static search(title) {
     return db.execute('SELECT title,summary FROM  unacademy.content WHERE TITLE=?',[title]);

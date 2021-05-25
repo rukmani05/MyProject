@@ -93,9 +93,7 @@ export class ManageSubjectsComponent implements OnInit {
 
 
   private refreshTable() {
-    // Refreshing table using paginator
-    // Thanks yeager-j for tips
-    // https://github.com/marinantonio/angular-mat-table-crud/issues/12
+  
     this.paginator._changePageSize(this.paginator.pageSize);
   }
   public loadData() {

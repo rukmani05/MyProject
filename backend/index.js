@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 //User Routes
 
 app.use('/register', userRoutes);
-app.use('/set_user',userRoutes);
+app.use('/user',userRoutes);
 app.use('/update',userRoutes);
 app.use('/view_user',userRoutes);
 
@@ -49,30 +49,34 @@ app.use('/login',loginRoutes);
 //Board Routes
 
 app.use('/create_board',boardRoutes);
-app.use('/delete_board',boardRoutes);
+
 app.use('/update',boardRoutes);
 
 //Std Routes
 
 app.use('/create_standard',stdRoutes);
-app.use('/delete_standard',stdRoutes);
+app.use('/std',stdRoutes);
 app.use('/update',stdRoutes);
 app.use('/view_std',stdRoutes);
+app.use('/view_standard',stdRoutes);
 
 //Subject Routes
 app.use('/view_subject',subRoutes);
 app.use('/create_subject',subRoutes);
-app.use('/delete_subject',subRoutes);
+app.use('/sub',subRoutes);
 app.use('/update',subRoutes);
+app.use('/view',subRoutes);
 
 
 
 //Content Routes
-app.use('/delete_content',contentRoutes);
+
 app.use('/create_content',contentRoutes);
-app.use('/list_content',contentRoutes);
-app.use('/search',contentRoutes);
+// app.use('/list_content',contentRoutes);
+// app.use('/search',contentRoutes);
 app.use('/update',contentRoutes);
+app.use('/content',contentRoutes);
+app.use('/view_content',contentRoutes);
 
 
 

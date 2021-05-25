@@ -1,13 +1,13 @@
 .container {
     display: flex;
   
-    min-width: 220px;
+    min-width: 80px;
     min-height:250px;
     overflow:-moz-hidden-unscrollable;
   }
   
   .container > * {
-    width: 100%;
+    width:330px;
     justify-content: center;
   }
   
@@ -20,14 +20,15 @@
   .mat-form-field {
     font-size: 16px;
     flex-grow: 1;
-    margin-left:80px;
+    margin-left:40px;
+    margin-right:10px;
     margin-top:30px;
     width:70%;
     height:20px;
   }
  
   .mat-raised-button.mat-success{
-    margin-left:160px;
+    margin-left:60px;
     color: #f0fff3;
     background-color:MediumSeaGreen;
     
