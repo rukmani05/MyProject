@@ -93,21 +93,23 @@
 
 
  <input type="checkbox" id="check">
- <header *ngIf="(isAdminlogged|| isUserlogged)" class="header">
+ <div *ngIf="(isAdminlogged|| isUserlogged)" class="header" >
+  <a routerLinkActive="active-link" routerLink="/logout" class="logout_btn"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
  
-  
+ </div> 
+  <!-- <nav *ngIf="(isAdminlogged|| isUserlogged)" class="navbar navbar-expand-lg  fixed-top" id="authorized_nav">
   
     <a routerLinkActive="active-link" routerLink="/logout" class="logout_btn"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
- 
-</header> 
+  </nav> -->
+
 
   
  <div  *ngIf="(isAdminlogged || isUserlogged)" class="sidebar">
 <div class="sidebar-menu" >
-  <div class="art">
+ 
   <label for="check">
     <i class="fa fa-bars" id="sidebar_btn"></i>
-  </label></div>
+  </label>
 
    <a *ngIf="(isAdminlogged || isUserlogged)" routerLink="/" ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;
       <span>Home</span></a>

@@ -14,6 +14,7 @@ import { AddStdComponent } from 'src/app/dialogs/add-std/add-std.component';
 import { EditStdComponent } from 'src/app/dialogs/edit-std/edit-std.component';
 import { DeleteStdComponent } from 'src/app/dialogs/delete-std/delete-std.component';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -34,7 +35,8 @@ export class ManageStandardsComponent implements OnInit {
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
               public dataService: DataService,
-              public toastr:ToastrService) {}
+              public toastr:ToastrService,
+              private router: Router) {}
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -102,7 +104,7 @@ export class ManageStandardsComponent implements OnInit {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
   public loadData() {
-    this.exampleDatabase = new DataService(this.httpClient);
+    this.exampleDatabase = new DataService(this.httpClient,this.router);
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     fromEvent(this.filter.nativeElement, 'keyup')
      

@@ -82,6 +82,7 @@ label #sidebar_btn{
    height: 100%;
    transition: 0.5s;
    transition-property: left;
+   z-index:10;
  }
 
  
@@ -91,9 +92,10 @@ label #sidebar_btn{
    color: #fff;
    display: block;
    width: 100%;
-   line-height: 60px;
+   line-height: 35px;
    text-decoration: none;
    padding-left: 30px;
+   padding-bottom:16px;
    box-sizing: border-box;
    transition: 0.5s;
  a:active{
@@ -109,7 +111,7 @@ label #sidebar_btn{
    padding-right: 10px;
  }
  
- 
+
  
  label #sidebar_btn:hover{
    color: #19B3D3;
@@ -159,14 +161,14 @@ justify-content: center;
 
 
  .header{
-	position: fixed;
+  position:fixed;
+  z-index:10;
 	background-color:#e3edf3;
 	height:40px;
 	width: 100%;
-	top:0px;
-  
+	top:0;
+ }
 
-  }
   .logout_btn{
 	
 	

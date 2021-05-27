@@ -12,12 +12,10 @@ declare const toggleSidebar:any;
 export class NavigationComponent implements OnInit {
  
   img4:string="assets/images/img4.jpg";
-  
   img6:string="assets/images/img6.jpg";
   img2:string="assets/images/img2.jpg";
   img3:string="assets/images/img3.jpg";
   isUserlogged = false;
-  
   isAdminlogged=false;
 
 

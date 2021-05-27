@@ -74,6 +74,8 @@ import { EditSubjectComponent } from './dialogs/edit-subject/edit-subject.compon
 import { DelSubjectComponent } from './dialogs/del-subject/del-subject.component';
 import { AddContentComponent } from './dialogs/add-content/add-content.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { EditContentComponent } from './dialogs/edit-content/edit-content.component';
+import { DeleteContentComponent } from './dialogs/delete-content/delete-content.component';
 // import { AddComponent } from './dialogs/add/add.component';
 
 
@@ -115,6 +117,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     DelSubjectComponent,
     AddContentComponent,
     UserDashboardComponent,
+    EditContentComponent,
+    DeleteContentComponent,
     // AddComponent
 
   ],
@@ -161,7 +165,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     AddSubjectComponent,
     EditSubjectComponent,
     DelSubjectComponent,
-    AddContentComponent
+    AddContentComponent,
+    EditContentComponent,
+    DeleteContentComponent
  ],
   providers: [
     {

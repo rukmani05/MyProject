@@ -6,6 +6,7 @@ import { Standard } from '../models/Standard';
 
 import { Subject } from '../models/Subject';
 import { Content } from '../models/Content';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,8 @@ export class DataService {
   private link6='http://localhost:3000/create_content';
   private link7='http://localhost:3000/view_content/';
   private link8='http://localhost:3000/view/subject/';
+  private link9="http://localhost:3000/update/content/";
+  private link10="http://localhost:3000/content/active/";
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -54,7 +57,9 @@ export class DataService {
   dialogData1: any;
   dialogData2: any;
   dialogData3:any;
-  constructor(private httpClient: HttpClient) { }
+  dataService: any;
+  constructor(private httpClient: HttpClient,
+    private router: Router) { }
 
   show() {
     this._loading.next(true);
@@ -71,7 +76,10 @@ export class DataService {
     return this.dataChange2.value;
   }
   get sub(): Subject[] {
-    return this.dataChange3.value
+    return this.dataChange3.value;
+  }
+  get cont():Content[]{
+    return this.dataChange4.value;
   }
   getDialogData() {
     return this.dialogData;
@@ -111,14 +119,9 @@ return this.dialogData2;
       });
 
   }
-  // getAllContent():void{
-  //   this.httpClient.get<Content[]>(this.link7).subscribe(sub => {
-  //     this.dataChange3.next(sub);
-  //   },
-  //     (error: HttpErrorResponse) => {
-  //       console.log(error.name + ' ' + error.message);
-  //     });
-  // }
+  viewContents(){
+   return this.httpClient.get('http://localhost:3000/view_content/');
+  }
   getSub(){
     return this.httpClient.get('http://localhost:3000/view/subject/');
   }
@@ -158,6 +161,16 @@ addContent(data):void{
     this.httpClient.post(this.link4, data).subscribe();
     this.dialogData2 = data;
   }
+  updateContent(content):void{
+    this.httpClient.post(this.link9,content).subscribe();
+    this.dialogData3=content;
+    }
+      
+  //  reloadCurrentPage() {
+  //   window.location.reload();
+  //  }
+
+
   setinactive(data):void{
     this.httpClient.post(this.URL,data).subscribe();
     this.dialogData=data;
@@ -169,6 +182,11 @@ addContent(data):void{
 inactiveSbject(data):void{
   this.httpClient.post(this.link5,data).subscribe();
   this.dialogData2=data;
+}
+inactiveContent(content):void{
+  this.httpClient.post(this.link10,content).subscribe(()=>{
+    this.dialogData3=content;
+  });
 
 }
 

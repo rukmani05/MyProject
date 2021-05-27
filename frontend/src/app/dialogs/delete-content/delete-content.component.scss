@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+  .mat-raised-button.mat-success{
+ 
+    color: #f0fff3;
+    background-color:gray;
+   
+  }
+  .mat-raised-button{
+    margin-left:23px;
+  }

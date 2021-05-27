@@ -21,9 +21,7 @@ export class AddContentComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddContentComponent>,
     private toastr:ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: Content,
-
-    
-    public dataService: DataService) { }
+   public dataService: DataService) { }
 
   ngOnInit(): void {
  this.dataService.getSub().subscribe(subjects=>{

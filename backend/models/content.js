@@ -14,20 +14,20 @@ module.exports = class Content{
   
   static save(content) {
     return db.execute(
-    'INSERT INTO unacademy.content (title,summary,sub_id,std_id) VALUES (?,?,?,?)',
-      [content.title,content.summary,content.sub_id,content.std_id]
+    'INSERT INTO unacademy.content (title,summary,sub_id,std_id,links) VALUES (?,?,?,?,?)',
+      [content.title,content.summary,content.sub_id,content.std_id,content.links]
     );
   }
   static delete(id) {
     return db.execute('DELETE FROM unacademy.content WHERE id = ?', [id]);
   }
-  static updateById(id,title){
+  static updateById(id,title,summary,standard_name,subject_name){
     return db.execute(
-      'UPDATE unacademy.content SET title=? WHERE id = ?',[title,id]);
+      'UPDATE unacademy.content SET title=?,summary=?,standard.standard_name=?,subject.subject_name=? WHERE id = ?',[title,summary,standard_name,subject_name,id]);
   }
 
   static view() {
-    return db.execute('SELECT subject_name ,title,summary FROM unacademy.content LEFT JOIN unacademy.subject On content.sub_id=subject.id ');
+    return db.execute('SELECT content.id, standard_name,subject_name ,title,summary,links FROM unacademy.content LEFT JOIN unacademy.subject On content.sub_id=subject.id LEFT JOIN unacademy.standard On content.std_id=standard.id WHERE content.active=1 ORDER BY standard.id ASC');
   }
   static active(id){
     return db.execute(

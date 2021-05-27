@@ -9,6 +9,7 @@ exports.create = async (req, res, next) => {
     const summary=req.body.summary;
     const sub_id=req.body.sub_id;
     const std_id=req.body.std_id;
+    const links=req.body.links;
    
   
     try {
@@ -19,8 +20,8 @@ exports.create = async (req, res, next) => {
       title:title,
       summary:summary,
       sub_id:sub_id,
-      std_id:std_id
-
+      std_id:std_id,
+      links:links
 };
   
       let result = await Content.save(contentDetails);
@@ -67,7 +68,7 @@ exports.create = async (req, res, next) => {
   
     try {
      
-      const updateResponse = await Content.updateById(req.body.id,req.body.title);
+      const updateResponse = await Content.updateById(req.body.id,req.body.title,req.body.summary,req.body.standard_name,req.body.subject_name);
         res.status(200).json(updateResponse);
         // res.json('Updated Content details')
       } catch (err) {

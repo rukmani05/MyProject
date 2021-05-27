@@ -44,8 +44,13 @@
         <mat-label >Summary</mat-label>
         <textarea matInput  [(ngModel)]="data.summary" name="summary" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label > Youtube Links</mat-label>
+        <input matInput  [(ngModel)]="data.links" name="links" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field><br><br>
-      
      
   
       <div mat-dialog-actions>

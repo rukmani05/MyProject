@@ -1,5 +1,5 @@
 const express = require('express');
-
+const fileuplaod=require('express-fileupload');
 const bodyParser = require('body-parser');
 
 const userRoutes = require('./routes/user');
@@ -15,7 +15,7 @@ const contentRoutes=require('./routes/content')
 const app = express();
 
 const ports = process.env.PORT || 3000;
-
+app.use(fileuplaod());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -34,6 +34,16 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+
+// app.post('/upload',function(req,res,next){
+
+
+//     res.send({
+//       success:true,
+//       message:'File uploaded!!'
+//     });
+//   })
 
 //User Routes
 
@@ -77,6 +87,7 @@ app.use('/create_content',contentRoutes);
 app.use('/update',contentRoutes);
 app.use('/content',contentRoutes);
 app.use('/view_content',contentRoutes);
+
 
 
 

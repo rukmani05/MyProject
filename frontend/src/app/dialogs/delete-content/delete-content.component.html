@@ -1,0 +1,11 @@
+
+  <div class="container">
+    <h3 mat-dialog-title><b>Are you sure want to delete?</b></h3>
+  
+  
+    <div mat-dialog-actions>
+
+      <button mat-raised-button mat-button color="warn" [mat-dialog-close]="1" (click)="Delete(); getToast();">Yes</button>
+      <button mat-raised-button mat-button color="success"  (click)="onNoClick()" tabindex="-1">No</button>
+    </div>
+  </div>

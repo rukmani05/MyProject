@@ -1,32 +1,40 @@
 
   
-  <button mat-icon-button color="primary" (click)="addNew()">
+
+  <button mat-icon-button (click)="addNew()">
     <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
   </button>
  
-
+<div >
+  <div class="row"  >
+    <div class="column"   *ngFor="let content of contents">
+<div class="card" >
+ <div  class="card-body">
+  <h2 class="card-title" style="color:green">Standard: {{content.standard_name}}</h2>
+  <h2 class="card-title" style="color:green">Subject: {{content.subject_name}}</h2>
+  <h3 class="card-title" style="color:green">Title: {{content.title}}</h3>
+  <h4 class="card-text" style="color:black;"><b>Summary:</b> {{content.summary}}</h4>
+  <iframe width="200" height="100" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" [src]="sanitizer.bypassSecurityTrustResourceUrl(content.links)"></iframe>
   
-    <!-- <div class="card">
-      <div class="card-body">title</div>
-    </div> -->
+  <!-- <iframe   [src]="sanitizer.bypassSecurityTrustResourceUrlcontent.links)"></iframe>  -->
 
-    <!-- <ng-container matColumnDef="subject__name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Subject Name</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.subject_name}}</mat-cell>
-    </ng-container>
+  <!-- <iframe src height="100" width="200"></iframe> -->
+  <!-- <iframe style="width: 200px; height: 100px;" [src]="{{links}}"> </iframe>  -->
+  <!-- <iframe width="200" height="100" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+  </iframe> -->
+  <div class="text-center">
+   
+    <button mat-raised-button mat-button color="success"    (click)="startEdit(content.id,content.title,content.summary,content.standard_name,content.subject_name)">Edit</button>&nbsp;&nbsp;
+    <button mat-raised-button mat-button color="warn"   (click)="delete(content.id)">Delete</button>
+  
+  </div>
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
-    </ng-container>
+</div>
+</div>
+</div>
 
-    <ng-container matColumnDef="summary">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Summary</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.summary}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+</div>
+</div><br>
 
 
 

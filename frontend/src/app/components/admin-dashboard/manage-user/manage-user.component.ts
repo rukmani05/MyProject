@@ -13,6 +13,7 @@ import {DataSource} from '@angular/cdk/collections';
 import { DataService } from 'src/app/services/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -31,7 +32,8 @@ export class ManageUserComponent implements OnInit {
   constructor(public httpClient: HttpClient,
     public dialog: MatDialog,
     public dataService: DataService,
-    public toastr:ToastrService
+    public toastr:ToastrService,
+    private router: Router
   ) { }
 
 
@@ -96,7 +98,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   public loadData() {
-    this.exampleDatabase = new DataService(this.httpClient);
+    this.exampleDatabase = new DataService(this.httpClient,this.router);
    
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     fromEvent(this.filter.nativeElement, 'keyup')

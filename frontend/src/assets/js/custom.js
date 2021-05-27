@@ -20,6 +20,22 @@
 //     this.mini = true;
 //   }
 // }
+
+// window.onscroll = function() {myFunction()};
+
+// var header = document.getElementById("myHeader");
+// var sticky = header.offsetTop;
+
+// function myFunction() {
+//   if (window.pageYOffset > sticky) {
+//     header.classList.add("sticky");
+//   } else {
+//     header.classList.remove("sticky");
+//   }
+// }
+
+
+
 const currentLocation=loaction.href;
 const menuItem=document.querySelectorAll('a');
 const menuLength=menuItem.length
@@ -29,3 +45,5 @@ for(let i=0;i<menuLength;i++){
 
     }
 }
+
+

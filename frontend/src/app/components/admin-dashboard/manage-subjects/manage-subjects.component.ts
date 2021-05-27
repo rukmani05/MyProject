@@ -16,6 +16,7 @@ import { Subject } from 'src/app/models/Subject';
 import { AddSubjectComponent } from 'src/app/dialogs/add-subject/add-subject.component';
 import { EditSubjectComponent } from 'src/app/dialogs/edit-subject/edit-subject.component';
 import { DelSubjectComponent } from 'src/app/dialogs/del-subject/del-subject.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-manage-subjects',
   templateUrl: './manage-subjects.component.html',
@@ -31,7 +32,8 @@ export class ManageSubjectsComponent implements OnInit {
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
               public dataService: DataService,
-              public toastr:ToastrService) {}
+              public toastr:ToastrService,
+              private router: Router) {}
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -97,7 +99,7 @@ export class ManageSubjectsComponent implements OnInit {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
   public loadData() {
-    this.exampleDatabase = new DataService(this.httpClient);
+    this.exampleDatabase = new DataService(this.httpClient,this.router);
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     fromEvent(this.filter.nativeElement, 'keyup')
      
