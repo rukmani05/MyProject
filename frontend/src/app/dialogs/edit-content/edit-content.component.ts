@@ -3,6 +3,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FormControl, Validators} from '@angular/forms';
 import{ToastrService}from 'ngx-toastr';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-edit-content',
@@ -10,8 +11,8 @@ import{ToastrService}from 'ngx-toastr';
   styleUrls: ['./edit-content.component.scss']
 })
 export class EditContentComponent implements OnInit {
-
-
+  subjects;
+  standards;
 
   constructor(public dialogRef: MatDialogRef<EditContentComponent>,
     private toastr:ToastrService,
@@ -19,6 +20,12 @@ export class EditContentComponent implements OnInit {
     
    ) { }
   ngOnInit(): void {
+    this.dataService.getSub().subscribe(subjects=>{
+      this.subjects=subjects;
+    })
+    this.dataService.getStd().subscribe(standards=>{
+      this.standards=standards;
+    })
   }
 
 formControl = new FormControl('', [

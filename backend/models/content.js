@@ -14,16 +14,16 @@ module.exports = class Content{
   
   static save(content) {
     return db.execute(
-    'INSERT INTO unacademy.content (title,summary,sub_id,std_id,links) VALUES (?,?,?,?,?)',
-      [content.title,content.summary,content.sub_id,content.std_id,content.links]
+    'INSERT INTO unacademy.content (title,summary,sub_id,std_id,links,file_key) VALUES (?,?,?,?,?,?)',
+      [content.title,content.summary,content.sub_id,content.std_id,content.links,content.file_key]
     );
   }
   static delete(id) {
     return db.execute('DELETE FROM unacademy.content WHERE id = ?', [id]);
   }
-  static updateById(id,title,summary,standard_name,subject_name){
+  static updateById(id,title,summary,std_id,sub_id,links){
     return db.execute(
-      'UPDATE unacademy.content SET title=?,summary=?,standard.standard_name=?,subject.subject_name=? WHERE id = ?',[title,summary,standard_name,subject_name,id]);
+      'UPDATE unacademy.content SET title=?,summary=?,std_id=?,sub_id=?,links=? WHERE id = ?',[title,summary,std_id,sub_id,links,id]);
   }
 
   static view() {

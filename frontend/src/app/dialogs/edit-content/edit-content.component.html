@@ -6,7 +6,7 @@
         <b style="font-size: 18px;">Edit Content</b>
       </div>
 
-      <mat-form-field >
+      <!-- <mat-form-field >
         <mat-label >Standard name</mat-label>
         <input matInput  [(ngModel)]="content.standard_name" name="standard_name" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
@@ -16,7 +16,32 @@
         <mat-label >Subject name</mat-label>
         <input matInput  [(ngModel)]="content.subject_name" name="subject_name" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field><br>
+      </mat-form-field><br> -->
+
+      <mat-form-field >
+        <mat-label>Standard </mat-label>
+           <!-- <input matInput  [(ngModel)]="content.standard_name" name="standard_name">   -->
+        <mat-select matInput [(ngModel)]="content.std_id" name="std_id" required>
+         
+          <mat-option [value]="standard.id" *ngFor="let standard of standards">{{standard.standard_name}}</mat-option> 
+          
+        </mat-select>
+       
+      </mat-form-field>
+
+
+
+
+<mat-form-field >
+  <mat-label>Subject </mat-label>
+   
+  <mat-select  [(ngModel)]="content.sub_id" name="sub_id" required>
+   
+    <mat-option [value]="subject.id" *ngFor="let subject of subjects">{{subject.subject_name}}</mat-option> 
+    
+  </mat-select>
+  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>
 
      
       <mat-form-field >
@@ -27,12 +52,25 @@
 
       <mat-form-field >
         <mat-label >Summary</mat-label>
-        <textarea matInput  matInput  [(ngModel)]="content.summary" name="summary" required></textarea>
+        <textarea  matInput  [(ngModel)]="content.summary" name="summary" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field><br>
-
+      
+      <mat-form-field >
+        <mat-label >Youtube Links</mat-label>
+        <textarea   matInput  [(ngModel)]="content.links" name="links" required></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
     
-<br><br>
+
+
+
+<mat-form-field>
+  <ngx-mat-file-input #removableInput formControlName="removablefile" placeholder="Choose file"></ngx-mat-file-input>
+  <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-form-field><br>
       
   
       <div mat-dialog-actions>

@@ -1,0 +1,155 @@
+
+
+  <head>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="update-profile.component.scss">
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+               <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+  <script src="assets/js/custom.js"></script>
+  </head>
+
+
+
+
+
+<div class="container" style="margin-left: 130px;margin-top:200px;">
+  <div *ngFor="let user of users">
+  <!-- <div class="profile-pic-div">
+    
+    <img [src]="img" alt=""id="photo">
+    <input type="file" id="file">
+    <label for="file" id="uploadBtn">Choose Photo</label>
+  </div>  -->
+
+   
+  <div class="container">
+   
+    <div class="avatar-upload">
+        <div class="avatar-edit">
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+            </div>
+        </div>
+    </div>
+</div>
+  
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mr-2">
+
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="user.name">
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="ml-2">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="user.email">
+          </mat-form-field>
+        </div>
+      </div>
+    </div><br>
+
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="col-mr-2">
+          <mat-form-field>
+            <mat-label>Mobile</mat-label>
+            <input matInput [(ngModel)]="user.mobile">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="col-ml-2">
+         
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput [(ngModel)]="user.address">
+          </mat-form-field>
+
+        </div>
+      </div>
+
+
+    </div><br>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="col-mr-2">
+
+          <mat-form-field>
+            <mat-label>Profession </mat-label>
+
+            <mat-select [(ngModel)]="user.profession_id" name="id" required>
+
+              <mat-option [value]="profession.id" *ngFor="let profession of professions">{{profession.name}}
+              </mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="col-ml-2">
+          <mat-form-field > 
+            <mat-label>Extra curriculum </mat-label>
+           
+            <mat-select  [(ngModel)]="user.activity_id" name="id" multiple  required>
+              <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search " #multiUserSearch (input)="onInputChange()">
+              <mat-option [value]="activity.id" *ngFor="let activity of activities">{{activity.interest}}
+              </mat-option>
+    
+            </mat-select>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+
+    </div><br>
+  
+    <br><br>
+  </div>
+  <div>
+    <button mat-raised-button mat-button color="success" (click)="Update();  goback();">Update</button>
+  </div>
+
+
+
+
+
+
+
+  <!-- <div  *ngFor="let user of users">
+  {{user.activity_id|json}}
+      EMail:{{user.email}}<br>
+      Mobile:{{user.mobile}}<br>
+      Father:{{user.f_name}}<br>
+      Address:{{user.address}}<br>
+      BG:{{user.b_group}} 
+      
+    </div>   
+   
+      {{activities|json}}  -->
+     

@@ -31,12 +31,13 @@ exports.login = async (req, res, next) => {
         {
           email: storedUser.email,
           userId: storedUser.id,
-          roles:storedUser.roles
+          roles:storedUser.roles,
+          name:storedUser.name
         },
         'secretfortoken',
         { expiresIn: '1h' }
       );
-      res.status(200).json({ token: token, userId: storedUser.id ,roles:storedUser.roles});
+      res.status(200).json({ token: token, userId: storedUser.id ,roles:storedUser.roles,name:storedUser.name});
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;

@@ -1,17 +1,22 @@
 mat-form-field {
-  width: 40%;
-  margin-left: 190px;
+  width: 60%;
 
+  
+height:25px;
+z-index:2;
 }
 
 button {
- margin-left:500px;
+
   width: 80px;
 }
 div{ 
-   margin-left: 188px;
+  justify-content: center;
 }
 
-// form {
-  
-//   background-color:honeydew;}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

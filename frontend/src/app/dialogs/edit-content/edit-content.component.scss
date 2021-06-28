@@ -3,27 +3,28 @@
     
   min-width:80px;
   min-height:320px;
-
+  overflow:-moz-hidden-unscrollable;
   }
   
   .container > * {
     
     width:330px;
     justify-content: center;
-    height:350px;
+    height:800px;
     
   }
   
   .form {
     display: flex;
-    padding-top: 12px;
+    padding-top: 8px;
     overflow:-moz-hidden-unscrollable;
   }
   
   .mat-form-field {
     font-size: 16px;
     flex-grow: 1;
-    margin-left:40px;
+    margin-left:33px;
+    margin-right:10px;
     margin-top:16px;
     width: 70%;
     height:40px;

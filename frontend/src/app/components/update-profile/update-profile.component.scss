@@ -1,0 +1,143 @@
+mat-form-field {
+    width: 60%;
+  
+    
+  height:25px;
+  z-index:2;
+  }
+  
+  button {
+  
+    width: 80px;
+  }
+  div{ 
+    justify-content: center;
+  }
+  
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .mat-raised-button.mat-success{
+ margin-left:360px;
+    color: #f0fff3;
+    background-color:MediumSeaGreen;
+  }
+// Profile
+
+//   .profile-pic-div{
+//     height: 150px;
+//     width: 200px;
+//     position: absolute;
+//     top: 150px;
+//     left: 50%;
+//     transform: translate(-50%,-50%);
+//     border-radius: 50%;
+//     overflow: hidden;
+//     border: 1px solid grey;
+// }
+
+// #photo{
+//     height: 100%;
+//     width: 100%;
+// }
+
+// #file{
+//     display: none;
+// }
+
+// #uploadBtn{
+//     height: 40px;
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     text-align: center;
+//     background: rgba(0, 0, 0, 0.7);
+//     color: wheat;
+//     line-height: 30px;
+//     font-family: sans-serif;
+//     font-size: 15px;
+//     cursor: pointer;
+//     display: none;
+// }
+// *{
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+body{
+  height: 100vh;
+  width: 100%;
+}
+
+
+
+body {
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+
+
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+        input {
+            display: none;
+            + label {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: #FFFFFF;
+                border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all .2s ease-in-out;
+                &:hover {
+                    background: #f1f1f1;
+                    border-color: #d6d6d6;
+                }
+                &:after {
+                    content: "\f040";
+                    font-family: 'FontAwesome';
+                    color: #757575;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+       
+    }
+}

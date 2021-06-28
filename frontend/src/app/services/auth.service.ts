@@ -8,11 +8,14 @@ import { first, catchError, tap } from "rxjs/operators";
 import { User } from "../models/User";
 import { ErrorHandlerService } from "./error-handler.service";
 
+
+
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
   private url = "http://localhost:3000";
+  private link = 'http://localhost:3000/view_profile/pic';
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
   isAdminLoggedIn$ =new BehaviorSubject<boolean>(false);
@@ -33,7 +36,7 @@ export class AuthService {
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
-      .post<User>(`${this.url}/register`, user, this.httpOptions)
+      .post<User>(`${this.url}/register`, user,this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<User>("signup"))
@@ -46,26 +49,30 @@ export class AuthService {
     password: Pick<User, "password">,
     
   ): Observable<{
+   
     token: string;
     userId: Pick<User, "id">;
+    
    
   }> {
     return this.http
       .post(`${this.url}/login`, { email, password }, this.httpOptions)
       .pipe(
         first(),
-        tap((tokenObject: { token: string; userId: Pick<User, "id">; roles:string;}) => {
+        tap((tokenObject: { token: string; userId: Pick<User, "id">; roles:string;name:string,user:number}) => {
           this.userId = tokenObject.userId;
-          
+         
          localStorage.setItem("token", tokenObject.token);
-          
+         localStorage.setItem("name",tokenObject.name);
+          localStorage.setItem("userId",JSON.stringify(this.userId));
+
           if(tokenObject.roles=='admin'){
             this.isAdminLoggedIn$.next(true);
-            this.router.navigate(['admindashboard']);
-      
+             this.router.navigate(['manage-content']);
+           
           }else{
             this.isUserLoggedIn$.next(true);
-          this.router.navigate(["user-dashboard"]);
+            this.router.navigate(['manage-content']);
           }
         }),
         catchError(
@@ -76,4 +83,14 @@ export class AuthService {
         )
       );
   }
+  logout(){
+    
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    this.isUserLoggedIn$.next(false);
+     this.isAdminLoggedIn$.next(false);
+    this.router.navigate(['login']);
+    }
+ 
 }
+

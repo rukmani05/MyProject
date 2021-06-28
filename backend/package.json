@@ -12,17 +12,20 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-validator": "^6.10.0",
     "file-saver": "^2.0.5",
+    "file-system": "^2.2.2",
+    "file-to-array-buffer": "^1.0.0",
+    "image-to-base64": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
-    "ng2-file-upload": "^1.4.0",
-    "nodemon": "^2.0.7"
+    "ng2-file-upload": "^1.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.7"
   }
 }

@@ -11,4 +11,7 @@ export interface User {
   b_group:string;
   address:string;
   roles:string;
+  img:string;
+  profession_id:number;
+  activity_id:number;
 }

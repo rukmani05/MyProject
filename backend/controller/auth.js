@@ -21,7 +21,8 @@ exports.signup = async (req, res, next) => {
     const f_name=req.body.f_name;
     const b_group=req.body.b_group;
     const address=req.body.address;
-  
+    const img=req.body.img;
+  console.log(req)
     try {
       const hashedPassword = await bcrypt.hash(password, 12);
       const confirmhash=await bcrypt.hash(confirm_pwd,12);
@@ -36,7 +37,8 @@ exports.signup = async (req, res, next) => {
         dob:new Date(dob),
         f_name:f_name,
         b_group:b_group,
-        address:address
+        address:address,
+        img:img
 
 
       };

@@ -16,4 +16,10 @@ export class AuthGuard implements CanActivate {
     }
     return this.authService.isUserLoggedIn$;
   }
+  // canDeActivate(): Observable<boolean> {
+  //   if (!this.authService.isUserLoggedIn$ && this.authService.isAdminLoggedIn$) {
+  //     this.router.navigate(["login"]);
+  //   }
+  //   return ;
+  // }
 }

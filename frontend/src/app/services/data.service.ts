@@ -1,7 +1,7 @@
 import { ContentChild, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/User';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Standard } from '../models/Standard';
 
 import { Subject } from '../models/Subject';
@@ -31,16 +31,18 @@ export class DataService {
   private link5='http://localhost:3000/sub/active/';
 
 
-  private link6='http://localhost:3000/create_content';
+  private link6='http://localhost:3000/create_content/';
   private link7='http://localhost:3000/view_content/';
   private link8='http://localhost:3000/view/subject/';
   private link9="http://localhost:3000/update/content/";
   private link10="http://localhost:3000/content/active/";
-
+  private link11="http://localhost:3000/profile/update";
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
-
+   httpOptions1: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ "Content-Type": "multipart/form-data" }),
+  };
 
   dataChange: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   dataChange2: BehaviorSubject<Standard[]> = new BehaviorSubject<Standard[]>([]);
@@ -122,14 +124,28 @@ return this.dialogData2;
   viewContents(){
    return this.httpClient.get('http://localhost:3000/view_content/');
   }
+  UserSideContents(){
+    return this.httpClient.get('http://localhost:3000/view_content/');
+  }
   getSub(){
     return this.httpClient.get('http://localhost:3000/view/subject/');
   }
   getStd(){
     return this.httpClient.get('http://localhost:3000/view_standard/name');
   }
-
-
+getuser(param:any){
+ 
+  let params = new HttpParams().set('id', param);
+  return this.httpClient.get('http://localhost:3000/view/user_details/',{params:params});
+   
+  
+}
+getProfession(){
+  return this.httpClient.get('http://localhost:3000/view_profession/');
+}
+getActivity(){
+  return this.httpClient.get('http://localhost:3000/view_activity/');
+}
 
   addStd(data): void {
     this.httpClient.post<Standard[]>(this.link, data).subscribe();
@@ -140,12 +156,29 @@ return this.dialogData2;
     this.httpClient.post<Subject[]>(this.link3, data).subscribe();
     this.dialogData2 = data;
 }
-addContent(data):void{
-  console.log(data);
-  this.httpClient.post<Content[]>(this.link6,data).subscribe();
-  this.dialogData3=data;
-}
+//  const headers= new HttpHeaders()
+//   .set('content-type', 'multipart/form-data')
+//   .set('Access-Control-Allow-Origin', '*');
 
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//    "Content-Type": "multipart/form-data" // 👈
+//   })
+// };
+
+  addContent(formData):void{
+  console.log(formData);
+ // console.log(data.files,"hii");
+  // console.log(data.target);
+ this.httpClient.post<Content[]>(this.link6,formData,this.httpOptions1).subscribe();
+ 
+}
+UserDetails_Update(users):void{
+  console.log(users);
+  this.httpClient.post(this.link11,users).subscribe();
+  this.router.navigate['manage-content'];
+ 
+}
 
   updateIssue(data): void {
     console.log(data)
@@ -166,10 +199,7 @@ addContent(data):void{
     this.dialogData3=content;
     }
       
-  //  reloadCurrentPage() {
-  //   window.location.reload();
-  //  }
-
+ 
 
   setinactive(data):void{
     this.httpClient.post(this.URL,data).subscribe();

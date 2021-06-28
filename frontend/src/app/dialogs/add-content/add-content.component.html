@@ -1,7 +1,7 @@
 <div class="container">
    
   
-    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <form  class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
       <div mat-dialog-content style="text-align: center; color:blue;">
         <b style="font-size: 18px;">Add Content</b>
       </div>
@@ -50,11 +50,20 @@
         <mat-label > Youtube Links</mat-label>
         <input matInput  [(ngModel)]="data.links" name="links" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field><br><br>
-     
+      </mat-form-field><br>
+
+      <mat-form-field> 
+         <ngx-mat-file-input required #removableInput placeholder="Choose file" (change)="fileChange($event)" ></ngx-mat-file-input>
+        <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+          <mat-icon>clear</mat-icon>
+           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </button> 
+        
+  </mat-form-field><br> <br>
+
   
       <div mat-dialog-actions>
-        <button mat-raised-button mat-button color="success" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd();  getToast();">Save</button>
+        <button mat-raised-button mat-button color="success" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd(); ">Save</button>
         <button mat-raised-button mat-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
       </div>
     </form>

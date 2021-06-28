@@ -32,12 +32,14 @@ router.post(
     body('f_name').trim().not().isEmpty(),
     body('b_group').trim().not().isEmpty(),
     body('address').trim().not().isEmpty(),
+    body('img').trim().not().isEmpty()
  ],
   authController.signup
 );
 router.post('/active',auth,userController.set_active)
 router.get('/',auth,userController.view);
 router.post('/user',auth,userController.update);
-
-
+router.get('/pic',auth,userController.profile);
+router.get('/user_details/',auth,userController.view_details);
+router.post('/update',auth,userController.profile_update);
 module.exports = router;

@@ -1,39 +1,42 @@
-
-  
-
-  <button mat-icon-button (click)="addNew()">
+<div *ngIf="isAdminlogged" >
+<button mat-icon-button style="float:right; top:50px; background-color:powderblue;" (click)="addNew()">
     <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
   </button>
- 
+</div>
+
+
 <div >
   <div class="row"  >
     <div class="column"   *ngFor="let content of contents">
 <div class="card" >
- <div  class="card-body">
-  <h2 class="card-title" style="color:green">Standard: {{content.standard_name}}</h2>
+ <div  class="card-body"> 
+
+ <div class="row">
+   <div class="col-sm-8" >
+  <h2 *ngIf="(isAdminlogged||isUserlogged)" class="card-title" style="color:green ;padding-top:2px;">Standard: {{content.standard_name}}</h2>
+</div>
+<div class="col-sm-4"  >
+  <button *ngIf="isAdminlogged" mat-icon-button color="accent" (click)="delete(content.id)">
+    <mat-icon aria-label="Delete">delete</mat-icon>
+  </button>
+  <button  *ngIf="isAdminlogged" mat-icon-button color="accent" (click)="startEdit(content.id,content.title,content.summary,content.standard_name,content.subject_name,content.links)">
+    <mat-icon aria-label="Edit">edit</mat-icon>
+  </button>
+  </div>
+</div>
+
   <h2 class="card-title" style="color:green">Subject: {{content.subject_name}}</h2>
   <h3 class="card-title" style="color:green">Title: {{content.title}}</h3>
   <h4 class="card-text" style="color:black;"><b>Summary:</b> {{content.summary}}</h4>
-  <iframe width="200" height="100" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" [src]="sanitizer.bypassSecurityTrustResourceUrl(content.links)"></iframe>
+   <iframe style="width: 300; height: 150; margin-left: 40px;"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" [src]="sanitizer.bypassSecurityTrustResourceUrl(content.links)"></iframe> <br>
   
-  <!-- <iframe   [src]="sanitizer.bypassSecurityTrustResourceUrlcontent.links)"></iframe>  -->
-
-  <!-- <iframe src height="100" width="200"></iframe> -->
-  <!-- <iframe style="width: 200px; height: 100px;" [src]="{{links}}"> </iframe>  -->
-  <!-- <iframe width="200" height="100" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-  </iframe> -->
-  <div class="text-center">
-   
-    <button mat-raised-button mat-button color="success"    (click)="startEdit(content.id,content.title,content.summary,content.standard_name,content.subject_name)">Edit</button>&nbsp;&nbsp;
-    <button mat-raised-button mat-button color="warn"   (click)="delete(content.id)">Delete</button>
-  
-  </div>
-
+</div>
 </div>
 </div>
 </div>
 
-</div>
+
+
 </div><br>
 
 
