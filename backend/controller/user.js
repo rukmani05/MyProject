@@ -65,7 +65,7 @@ console.log(typeof(path_dir));
       "address": result[0].address,
       "mobile": result[0].mobile,
       "profession_id": result[0].profession_id,
-      "image":path_dir,
+      // "image":path_dir,
       "activity_id": b
     }
     arr.push(final);
@@ -148,21 +148,21 @@ exports.profile_update = async (req, res, next) => {
 //     console.log(base64);
 // }
 
-  console.log(req.body.id, "hii", req.body);
+  // console.log(req.body.id, "hii", req.body);
   let activity_id = req.body.activity_id;
   let id = req.body.id;
   let user_id = req.body.id;
   try {
     const file=req.files.target;
-    console.log(req)
-    // const size=file.data.length;
-    const extension=path.extname(file.name);
-    const allowedExtensions= /png|jpeg|jpg/;
+    console.log(req,"hi")
+   
+    // const extension=path.extname(file.name);
+    // const allowedExtensions= /png|jpeg|jpg/;
     
-    if(!allowedExtensions.test(extension))throw "Unsupported format";
+    //  if(!allowedExtensions.test(extension))throw "Unsupported format";
     // if(size>5000000)throw "File must be less than 5mb";
     
-  file.mv('../frontend/src/assets/images/'+file.name);
+   file.mv('../frontend/src/assets/images/'+file.name);
   //  file.mv('./uploads/' +file.name);
   
 // base64_encode(file);
@@ -177,6 +177,7 @@ const addimage=await User.addimg(id,image);
 
 
     const del = await Activity_user.delete_previous(user_id);
+    
     for (let i = 0; i < activity_id.length; i++) {
       const fin = {
         user_id: id,
@@ -189,6 +190,7 @@ const addimage=await User.addimg(id,image);
 
 
     res.json({message:"Profile updated successfully!"});
+    
 
   } catch (err) {
     if (!err.statusCode) {

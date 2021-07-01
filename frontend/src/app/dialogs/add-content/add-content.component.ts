@@ -19,10 +19,9 @@ import { elementAt } from 'rxjs/operators';
 export class AddContentComponent implements OnInit {
   subjects;
   standards;
-  md5:string;
-  
   uploadedFiles: any ;
-
+  targets: any;
+  imageUrl: any;
   
   constructor(public dialogRef: MatDialogRef<AddContentComponent>,
     private toastr:ToastrService,
@@ -66,62 +65,74 @@ onNoClick(): void {
 this.dialogRef.close();
 }
 
+
+
+
 // fileChange(element){
-//   this.uploadedFiles=element.target.files;
-// }
-
-// public confirmAdd():void{
-//   var fd=new FormData();
-// // fd.append('title',this.data.title);
-// // fd.append('summary',this.data.summary);
-// // fd.append('std_id',this.data.std_id);
-// // fd.append('sub_id',this.data.sub_id);
-// // fd.append('links',this.data.links);
-// fd.append('target',this.uploadedFiles);
-// this.dataService.addContent(this.data,fd)
-// }
-
-
-
-fileChange(element){
  
-  this.uploadedFiles = element.target.files;
-  console.log(element.target.files);
-console.log(this.uploadedFiles);
+//   this.uploadedFiles = element.target.files;
+//   console.log(element.target.files);
+// console.log(this.uploadedFiles);
+// }
+handleFileInput(file: FileList) {
+   
+  this.targets = file.item(0);
+
+  
+  let reader = new FileReader();
+  reader.onload = (event: any) => {
+    this.imageUrl = event.target.result;
+  }
+  reader.readAsDataURL(this.targets);
+  console.log(this.targets);
+ 
+  
 }
 
-
 public confirmAdd():void{
-  console.log(this.uploadedFiles,"Hellooo");
-  //  let formData ;
-  let formData = new FormData(); 
-  for (var i = 0; i < this.uploadedFiles.length; i++) {
+//   console.log(this.uploadedFiles,"Hellooo");
+//   //  let formData ;
+//   let formData = new FormData(); 
+//   for (var i = 0; i < this.uploadedFiles.length; i++) {
 
    
-    formData.append('target[]', this.uploadedFiles[i]);
+//     formData.append('target', this.uploadedFiles[i]);
 
-      // formData.push(this.uploadedFiles[i]);
-    // this.data["target"]=this.uploadedFiles[i];
-    // formData.append("target",this.uploadedFiles[i])
-    // console.log(formData,"hii");
-    //  console.log(this.data["target"]);
-     }
+//       // formData.push(this.uploadedFiles[i]);
+//     // this.data["target"]=this.uploadedFiles[i];
+//     // formData.append("target",this.uploadedFiles[i])
+//     // console.log(formData,"hii");
+//     //  console.log(this.data["target"]);
+//      }
 
-// this.data["file"]=formData;
+// // this.data["file"]=formData;
 console.log(this.data);
-// console.log(this.data,this.data["target"]);
+// // console.log(this.data,this.data["target"]);
 
 
+// formData.append('title',this.data['title']);
+// formData.append('summary',this.data['summary']);
+// formData.append('links',this.data['links']);
+// formData.append('sub_id',this.data['sub_id']);
+// formData.append('std_id',this.data['std_id']);
+
+// formData.forEach((value,key) => {
+//   console.log(key+" "+value)
+// });
+// this.dataService.addContent(formData);
+
+let formData=new FormData();
+formData.append('std_id',this.data['std_id']);
+formData.append('sub_id',this.data['sub_id']);
 formData.append('title',this.data['title']);
 formData.append('summary',this.data['summary']);
 formData.append('links',this.data['links']);
-formData.append('sub_id',this.data['sub_id']);
-formData.append('std_id',this.data['std_id']);
+formData.append('target',this.targets);
 
-formData.forEach((value,key) => {
-  console.log(key+" "+value)
-});
 this.dataService.addContent(formData);
+
+
+
 
 }
 }

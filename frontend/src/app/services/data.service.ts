@@ -170,13 +170,14 @@ getActivity(){
   console.log(formData);
  // console.log(data.files,"hii");
   // console.log(data.target);
- this.httpClient.post<Content[]>(this.link6,formData,this.httpOptions1).subscribe();
+ this.httpClient.post(this.link6,formData).subscribe();
  
 }
-UserDetails_Update(users):void{
-  console.log(users);
-  this.httpClient.post(this.link11,users).subscribe();
-  this.router.navigate['manage-content'];
+UserDetails_Update(formData):void{
+  console.log(formData);
+  // console.log(target);
+  this.httpClient.post(this.link11,formData).subscribe();
+  
  
 }
 

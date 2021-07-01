@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { VERSION } from '@angular/material/core';
 
 
 @Component({
@@ -17,7 +18,11 @@ export class UpdateProfileComponent implements OnInit {
   professions;
   activities;
   _activities;
-   img:any;
+  targets: any;
+  imageUrl: any;
+
+
+  //  img:any;
   // img: string = "assets/images/comp.jpg";
 
 
@@ -33,9 +38,8 @@ export class UpdateProfileComponent implements OnInit {
     this.dataService.getuser(this.id).subscribe(users => {
       console.log(users);
       this.users = users;
-    //  this.img= this.users[0].image;
-    // this.img = this.sanitizer.bypassSecurityTrustUrl(this.users[0].image);
-    // console.log(this.img);
+     
+    
     });
 
 
@@ -75,23 +79,70 @@ export class UpdateProfileComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
+  handleFileInput(file: FileList) {
+   
+    this.targets = file.item(0);
 
+    
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.targets);
+    console.log(this.targets);
+   
+    
+  }
   Update() {
 
     this.users[0]['id'] = Number(this.id);
-    // this.users[0]['activity_id']=Number(this.users[0].activity_id);
-
-    console.log(this.users[0].activity_id[0]);
-
-
-
-
     console.log(this.users);
-    this.dataService.UserDetails_Update(this.users[0]);
-  }
-  goback() {
-    this.location.back();
-  }
+  // let target=this.targets;
+
+  // this.users[0]['files']=target;
+
+let formData=new FormData();
+formData.append('id',this.users[0]['id']);
+formData.append('name',this.users[0]['name']);
+formData.append('email',this.users[0]['email']);
+formData.append('mobile',this.users[0]['mobile']);
+formData.append('address',this.users[0]['address']);
+formData.append('profession_id',this.users[0]['profession_id']);
+for (let i = 0; i < this.users[0].activity_id.length; i++) {
+  
+      
+      //  activity_id: this.users[0].activity_id[i]
+      formData.append('activity_id',(this.users[0].activity_id[i]));
+  
+   }
+
+formData.append('target',this.targets);
+
+    // this.dataService.UserDetails_Update(this.users[0]);
+    this.dataService.UserDetails_Update(formData);
+  };
+  
+
+
+
+  // goback() {
+  //   this.location.back();
+  // }
+
  
 
 }
+// this.users[0]['activity_id']=Number(this.users[0].activity_id);
+  // let formData = new FormData(); 
+    // for (var i = 0; i < this.target.length; i++) {
+      
+    //   formData.append('target[]', this.target[i]);
+    //   console.log(formData);
+      
+    // }
+    // console.log(this.users[0]);
+    // console.log(typeof(this.users[0]));
+    // const formData = new FormData();
+    // formData.append('target', this.target, this.target.name);
+
+    // console.log(formData);

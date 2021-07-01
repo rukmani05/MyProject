@@ -53,8 +53,8 @@
       </mat-form-field><br>
 
       <mat-form-field> 
-         <ngx-mat-file-input required #removableInput placeholder="Choose file" (change)="fileChange($event)" ></ngx-mat-file-input>
-        <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+         <ngx-mat-file-input required #removableInput placeholder="Choose file" (change)="handleFileInput($event.target.files)" ></ngx-mat-file-input>
+         <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)"> 
           <mat-icon>clear</mat-icon>
            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </button> 

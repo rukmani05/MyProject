@@ -19,7 +19,7 @@
 
 
 <div class="container" style="margin-left: 130px;margin-top:200px;">
-  <div *ngFor="let user of users">
+
   <!-- <div class="profile-pic-div">
     
     <img [src]="img" alt=""id="photo">
@@ -27,21 +27,10 @@
     <label for="file" id="uploadBtn">Choose Photo</label>
   </div>  -->
 
-   
-  <div class="container">
-   
-    <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-            </div>
-        </div>
-    </div>
-</div>
-  
+  <input #Image type="file" (change)="handleFileInput($event.target.files)"/>
+  <img width="20%" height="30%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+ 
+  <div *ngFor="let user of users">
     <div class="row">
       <div class="col-md-6">
         <div class="mr-2">
@@ -132,7 +121,7 @@
     <br><br>
   </div>
   <div>
-    <button mat-raised-button mat-button color="success" (click)="Update();  goback();">Update</button>
+    <button mat-raised-button mat-button color="success" (click)="Update()">Update</button>
   </div>
 
 

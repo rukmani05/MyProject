@@ -20,7 +20,7 @@ exports.create = async (req, res, next) => {
   console.log(req)
   // const size=file.data.length;
   const extension=path.extname(file.name);
-  const allowedExtensions= /png|jpeg|jpg|gif|pdf|txt|csv|doc|xls|bmp|exe|dll|rar|html/;
+  const allowedExtensions= /pdf|txt|csv|doc|xls|bmp|exe|html/;
   
   if(!allowedExtensions.test(extension))throw "Unsupported format";
   // if(size>5000000)throw "File must be less than 5mb";

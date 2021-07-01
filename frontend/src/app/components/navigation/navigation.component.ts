@@ -23,8 +23,8 @@ export class NavigationComponent implements OnInit {
   img2: string = "assets/images/img2.jpg";
   img3: string = "assets/images/img3.jpg";
   profile: string;
-  isUserlogged = false;
-  isAdminlogged = false;
+  isUserlogged;
+  isAdminlogged; 
   name = '';
 //   public items: { field: string }[] = [
 //     { field: 'Option 1' },
@@ -34,7 +34,12 @@ export class NavigationComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
  
   ngOnInit(): void {
-
+    window.addEventListener("keyup", disableF5);
+    window.addEventListener("keydown", disableF5);
+  
+   function disableF5(e) {
+      if ((e.which || e.keyCode) == 116) e.preventDefault(); 
+   };
 
     this.authService.isUserLoggedIn$.subscribe((isLoggedIn) => {
       this.isUserlogged = isLoggedIn;
